@@ -1,5 +1,28 @@
 {
   "dependencies": {
-    "crypto-js": "^4.1.1"
-  }
+    "browserify": "^17.0.0",
+    "crypto-js": "^4.1.1",
+    "watchify": "^4.0.0"
+  },
+  "name": "superhero-hunter",
+  "description": "\"# superhero-hunter\"",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"browserify ./src/hash.js -o ./public/bundle.js",
+    "watch":"watchify ./src/hash.js -o ./public/bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Honeshwar/superhero-hunter.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Honeshwar/superhero-hunter/issues"
+  },
+  "homepage": "https://github.com/Honeshwar/superhero-hunter#readme"
 }
