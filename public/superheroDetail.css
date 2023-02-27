@@ -27,17 +27,24 @@ body{
     align-items:center;
     background:rgb(255, 252, 254);
     border-radius: 20px;
-    box-shadow:0 0 1px 1px #a2a9b3;
+    box-shadow:0 0 5px 3px #a2a9b3;
 
-    transform:rotateY(360deg);
-    transition:all 5s ease-in-out;
-    background:url('https://cdn.pixabay.com/animation/2023/01/25/07/54/07-54-16-78_640.png');
+    /* transform:rotateY(360deg);
+    transition:all 5s ease-in-out; */
+    /* background:url('https://cdn.pixabay.com/animation/2023/01/25/07/54/07-54-16-78_640.png'); */
+    /* background-repeat:no-repeat;
+    background-size:cover; */
 }
+#superhero-container:hover{
+background-position:right;
+transition:all 2s ease-in-out;
+}
+
 
 #superhero-image-container {
     width:30%;
     height:70%;
- box-shadow:0 0 5px 1px rgb(192, 187, 187);
+ box-shadow:0 0 5px 1px rgb(53, 53, 53);
  border-radius: 20px;
  
  
@@ -67,7 +74,7 @@ body{
     justify-content:space-evenly;
     align-items:center;
     padding:20px;
-    background:rgb(19, 6, 104);
+    background:rgba(8, 1, 53, 0.481);
     /* overflow-y: scroll; */
     color:white;
 } 
@@ -93,7 +100,7 @@ body{
 #superhero-details-container span{
     font-size:1.2rem;
     width:70%;
-    color:rgb(137, 132, 170);
+    color:rgb(255, 223, 14);
     overflow-y: scroll;
 }
 #superhero-container{

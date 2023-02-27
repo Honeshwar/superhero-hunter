@@ -159,7 +159,7 @@ width:12px
 }
 .superhero-container {
     /* display: none; */
-    visibility:hidden;
+    /* visibility:hidden; */
 }
 
 
@@ -243,7 +243,7 @@ width:12px
 
 @media  screen and (max-width:1020px) {
     .superhero-container {
-        width:30%;
+        width:21%;
         height:70%;
       
     }
@@ -261,6 +261,23 @@ width:12px
 
 }
 
+@media  screen and (max-width:700px) {
+    .superhero-container {
+        width:35%;
+        height:70%;
+      
+    }
+    #search-container form{
+        width:200%;
+        height:100%;
+    
+    }
+    #search-container a{
+       font-size: 1.5rem;
+    }
+   
+    
+}
 
 @media  screen and (max-width:520px) {
     .superhero-container {
@@ -276,6 +293,17 @@ width:12px
     #search-container a{
        font-size: 1.5rem;
     }
+   
+    
+}
+
+@media  screen and (max-width:400px) {
+    .superhero-container {
+        width:60%;
+        height:70%;
+      
+    }
+   
    
     
 }

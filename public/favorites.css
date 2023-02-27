@@ -32,15 +32,15 @@ body{
     justify-content: center;
     align-items: center;
     padding-left:10px;
-     padding-right:10px;
+    padding-right:10px;
 }
 
 #title-and-link h1{
     height:10%;
     /* text-align: center; */
    color:rgb(14, 8, 80);
-   /* text-decoration:underline;
-   box-shadow:0 0 2px 1px ; */
+   text-decoration:underline;
+   /* box-shadow:0 0 2px 1px ; */
    /* transform:rotateY(360deg);
    transition:all 5s ease-in-out; */
 }
@@ -68,6 +68,31 @@ body{
     margin-top: 40px;
 
 }
+
+#superhero-list-container::-webkit-scrollbar{
+    width:12px
+    }
+    #superhero-list-container::-webkit-scrollbar-track{
+        background: rgb(7, 7, 94,.3);
+        border-radius: 20px;
+    }
+    
+    #superhero-list-container::-webkit-scrollbar-thumb{
+       
+        background:rgb(247, 247, 252);
+        /* border:3px solid orange; */
+        border-radius: 20px;
+    }
+    #superhero-list-container::-webkit-scrollbar-thumb:hover{
+       
+        box-shadow:0 0 5px 2px  rgb(0, 0, 0);;
+    }
+    /* #superhero-list-container::-webkit-scrollbar-track-piece{
+       
+        background:rgb(0, 0, 6);
+        /* border:3px solid orange; */
+        /* border-radius: 20px;
+    } */ 
 
 .superhero-container {
     width:15%;
@@ -158,8 +183,10 @@ body{
 }
 .superhero-detail-and-remove-link a{
     color:rgb(23, 174, 6);
-    /* text-align: center; */   border-top:solid;
-  
+    /* text-align: center;  */
+      border-top:solid;
+      cursor:pointer;
+   
 }
 .superhero-detail-and-remove-link a:hover{
     /* color:rgb(17, 8, 93); */
@@ -169,4 +196,67 @@ body{
 #superhero-list-container{
     /* display: none; */
     visibility:visible;
+}
+
+
+
+@media  screen and (max-width:1020px) {
+    .superhero-container {
+        width:30%;
+        height:70%;
+      
+    }
+    .superhero-name-container {
+        font-size: 1rem;
+    }
+    #search-container form{
+        width:150%;
+        height:100%;
+    
+    }
+    #search-container a{
+       font-size: 1.3rem;
+    }
+
+}
+
+
+@media  screen and (max-width:600px) {
+    .superhero-container {
+        width:40%;
+        height:70%;
+      
+    }
+   
+    #title-and-link a{
+      
+        font-size:.8rem;
+        color:rgb(255, 255, 255);
+     }
+     
+     #title-and-link a:hover{
+        font-size:1rem;
+     }
+    
+}
+
+@media  screen and (max-width:400px) {
+    .superhero-container {
+        width:60%;
+        height:70%;
+      
+    }
+   
+    #title-and-link h1{
+       font-size:1.1rem;
+    }
+    #title-and-link a{
+      
+        font-size:.7rem;
+        color:rgb(255, 255, 255);
+     }
+     #title-and-link a:hover{
+        font-size:.8rem;
+     }
+    
 }

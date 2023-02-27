@@ -95,11 +95,11 @@ let clickOnCharacters = [
       
         // const characterName = charactersName[i].textContent; console.log(characterName);
         // const imgSrc = charactersImage[i].getAttribute("src");
-        const character=JSON.parse(superheroContainers[i].getAttribute("value"));//value=as string obj store ='{"id":"987",}'
+        const character=JSON.parse(superheroContainers[i].getAttribute("value"));
         let presentInFavoriteCharacters=null;
         if(favoriteCharacters!==null){//first time get from local storage in below api call function it return "null"
-            console.log(favoriteCharacters.filter((e)=>e.id===character.id));
-            presentInFavoriteCharacters = favoriteCharacters.filter((e)=>e.id===character.id);
+            console.log(favoriteCharacters.filter((e)=>e.characterId===character.id));
+            presentInFavoriteCharacters = favoriteCharacters.filter((e)=>e.characterId===characterId);
          
         }else{
             favoriteCharacters=[];
