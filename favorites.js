@@ -21,14 +21,16 @@ function fetchElement(){
 }
 
 
-
-//iterate all favorites and make call to   createSuperheroContainer() function with argument as superhero data(obj)
-if(favorites !== null){//when local storage not having favorites as key it return null,So for that we set an check
+if(favorites == null || favorites.length==0){
+    //when nothing in favorite or favorite is null
+    superheroListContainer.insertAdjacentHTML('beforeend',`<h1>"Favorite superhero display here"</h1>`);
+}else{
+    //when local storage not having favorites as key it return null,So for that we set an check
+    //iterate all favorites and make call to  createSuperheroContainer() function with argument as superhero data(obj)
     for(let i=0;i<favorites.length;i++){
         createSuperheroContainer(favorites[i]);
     }
-    fetchElement();///fetch html elements that we just created by  createSuperheroContainer() function
-    
+    fetchElement();///fetch html elements that we just created by  createSuperheroContainer() function  
 }
 
 

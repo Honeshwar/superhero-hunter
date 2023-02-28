@@ -77,7 +77,7 @@ function fetchElement(){
 
      //favorite character array==null when not set up local storage for favorites ,during api response when favoriteCharacters array as favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
         if(favoriteSuperheros!==null){
-            presentInFavoriteSuperheros = favoriteSuperheros.filter((e)=>e.id===favoriteCharacterData.id);
+            presentInFavoriteSuperheros = favoriteSuperheros.filter((e)=>e.id===favoriteSuperherosData.id);
         }else{
             //when favorite characters array is null(that we get from local storage),we make it empty array and add new favorite superhero in it than add to local storage
             favoriteSuperheros=[];
