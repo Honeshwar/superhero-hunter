@@ -75,7 +75,7 @@ function fetchElement(){
         //find whether favoriteSuperhero present in favorite in local storage or not
         let presentInFavoriteSuperheros=null;
 
-     //favorite character array==null when not set up local storage for favorites ,during api response when favoriteCharacters array as favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
+     //favorite character array==null when not set up local storage for favorites ,during api response when favoriteSuperheros array as favoriteSuperheros=JSON.parse(localStorage.getItem("favorites"));
         if(favoriteSuperheros!==null){
             presentInFavoriteSuperheros = favoriteSuperheros.filter((e)=>e.id===favoriteSuperherosData.id);
         }else{
@@ -136,7 +136,7 @@ function fetchElement(){
             }
        
         // setting  array an local storage favorites array,so use it for mark favorite always with red star
-        favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
+        favoriteSuperheros=JSON.parse(localStorage.getItem("favorites"));
 
    
         //creating container  for superhero, for all superhero we get from API request
@@ -144,9 +144,9 @@ function fetchElement(){
            
             //finding current superhero(results[i]) is already in our favorite or not
             let isFavorite=false;
-            if(favoriteCharacters!==null&&favoriteCharacters.length>0 ){//null means no favorites in local storage 
-                //finding or  filtering  out from favoriteCharacters array, is  that current superhero(results[i]) is  present in  this array or not  
-                const character =  favoriteCharacters.filter((e)=>results[i].id==e.id);
+            if(favoriteSuperheros!==null&&favoriteSuperheros.length>0 ){//null means no favorites in local storage 
+                //finding or  filtering  out from favoriteSuperheros array, is  that current superhero(results[i]) is  present in  this array or not  
+                const character =  favoriteSuperheros.filter((e)=>results[i].id==e.id);
                
                 // if current superhero is present in array, that id not null or is favorite is true than we do isFavorite - true
                 if(character[0] && character[0].id !== null  && character[0].addToFavorite===true){//null when value in superhero container not present
@@ -216,7 +216,7 @@ function getSuperherosByExactName(input){
     }).then((responseData)=>{
         //only one element inside this resulting array,i=0
         const results = responseData.data.results; 
-    favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
+    favoriteSuperheros=JSON.parse(localStorage.getItem("favorites"));
 
    
       // if response.data.results array is empty s,o remove all node from dom and add an text to  superheroListContainer no superhero exists wi th
@@ -229,9 +229,9 @@ function getSuperherosByExactName(input){
     }
         //finding current superhero(results[i]) is already in our favorite or not
         let isFavorite=false;
-        if(favoriteCharacters!==null&&favoriteCharacters.length>0 ){//null no fav in local storage line 143
-            //finding or  filtering  out from favoriteCharacters array, is  that current superhero(results[i]) is  present in  this array or not  
-            const character =  favoriteCharacters.filter((e)=>results[0].id==e.id);//(results[0].id)string==number(characterId),not use ===
+        if(favoriteSuperheros!==null&&favoriteSuperheros.length>0 ){//null no fav in local storage line 143
+            //finding or  filtering  out from favoriteSuperheros array, is  that current superhero(results[i]) is  present in  this array or not  
+            const character =  favoriteSuperheros.filter((e)=>results[0].id==e.id);//(results[0].id)string==number(characterId),not use ===
             
             // if current superhero is present in array, that id not null or is addToFavorite is true than we do isFavorite - true
             if(character[0] && character[0].id !== null  && character[0].addToFavorite===true){//null when value in superhero container not present
