@@ -1,7 +1,7 @@
 //fetch html element/node that we needed
-const superheroListContainer=document.querySelector('#superhero-overall-container');
+const navigationAndSuperheroDetailContainer = document.getElementById('superhero-detail-and-navigation-container');
 
-// console.log('after character',JSON.parse(localStorage.getItem('characterDetail')));
+console.log('after character',JSON.parse(localStorage.getItem('characterDetail')));
 //get superhero from local storage as superheroDetailDetail
 const superheroDetail = JSON.parse(localStorage.getItem('superheroDetailDetail'));//an obj {id,name,imgUrl,description, series,stories}
 
@@ -28,7 +28,7 @@ function createSuperheroContainer(superheroDetail){//${} display any variable
         }
     }
     // adding node(superhero container) as child to  superhero List Container 
-    superheroListContainer.insertAdjacentHTML('afterbegin',`
+    navigationAndSuperheroDetailContainer.insertAdjacentHTML('afterbegin',`
     <div id="superhero-container"  style="background-image:url('${superheroDetail.imgUrl}');">
 
         <div id="superhero-image-container">
@@ -43,6 +43,10 @@ function createSuperheroContainer(superheroDetail){//${} display any variable
             <p><medium id="">Last updated 3 mins ago</medium></p>
         
         </div>
+  </div>
+    <div id="navigation-container">
+    <a href="./index.html"> <i class=" fas fa-home"></i> Go To Home </a> 
+    <a href="./favorites.html"><i class="fa-solid fa-star"></i> Favorite</a>
   </div>
     `);
 }

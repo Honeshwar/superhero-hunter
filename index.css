@@ -1,21 +1,29 @@
+/************ remove default margin ***********/
 *{
     margin:0;
 }
 
-/* setting  background image to body */
+
+
+/************ setting  background image to body ***********/
 body{
     background:url("https://cdn.pixabay.com/animation/2023/01/25/07/54/07-54-16-78_640.png");
     background-repeat: repeat;
     background-size:contain;
 }
 
-/* this container contain entire superhero html page styling  */
+
+
+/************* this container contain entire superhero html page styling  *************/
 #app {
    background-color: rgb(7, 7, 94,.3);
     width:100vw;
     height:100vh;
 }
-/* *********** styling heading and search *********** */
+
+
+
+/************* styling heading and search *************/
 #app-name-and-search-container {
     /* border:solid; */
     width:100%;
@@ -25,9 +33,13 @@ body{
    align-items: center;
   justify-content: space-evenly;
 }
-/* styling heading   */
+
+
+
+/************* styling heading  *************/
 #app-name-and-search-container h3{
     font-family:Impact;
+    font-size:2rem;
     border-bottom: 4px solid white;
     color:rgb(5, 5, 102);
 }
@@ -42,7 +54,9 @@ body{
 
 }
 
-/* styling  search box and submit button  */
+
+
+/************* styling  search box and submit button  *************/
 #search-container{
     width:100%;
     height:40%;
@@ -67,11 +81,27 @@ body{
     border: .2px solid rgb(184, 184, 191);
     box-shadow: 0 0 6px 3px midnightblue;
 }
+#search-container form button{
+    width:10%;
+    height:100%;
+    border-radius: 10px;
+    border: .2px solid rgb(184, 184, 191);
+    font-size:1rem;
+}
+#search-container form button:hover{
+    color:white;
+    background-color: rgb(154, 8, 203);
+    border: 2px solid rgb(255, 255, 255);
+}
+
+
+
+/************* styling favorite link *************/
 #search-container a{
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-top: 10px;
-    color:black;
+    color:rgb(244, 245, 255);
 }
 #search-container a i{
   color:rgb(232, 244, 9);
@@ -82,21 +112,12 @@ body{
     text-decoration:underline;
  }
 
-#search-container form button{
-    width:10%;
-    height:100%;
-    border-radius: 10px;
-    border: .2px solid rgb(184, 184, 191);
-}
-#search-container form button:hover{
-    color:white;
-    background-color: rgb(154, 8, 203);
-    border: 2px solid rgb(255, 255, 255);
-}
 
-/****************************** styling list of superhero container******************************* */
 
-/* styling list + scrollbar */
+
+/****************************** styling list of superhero container that container number of superhero ******************************* */
+
+/************* styling list + scrollbar *************/
 #superhero-list-container{
    
     width:100%;
@@ -128,7 +149,9 @@ width:12px
     box-shadow:0 0 5px 2px  rgb(0, 0, 0);;
 }
 
-/* styling each superhero container */
+
+
+/************* styling each superhero container *************/
 .superhero-container {
     width:15%;
     height:60%;
@@ -139,13 +162,14 @@ width:12px
     box-shadow:0 0 10px 2px  rgb(0, 0, 0);;
 }
 
-/* doing style on superhero image  */
+
+
+/************* doing style on superhero image  *************/
 .superhero-image-container{
     width:100%;
     height:70%;
     display:flex;
     justify-content: center;
-    /* align-items:center; */
    
 }
 .superhero-image-container img{
@@ -154,7 +178,9 @@ width:12px
     border-radius: 10px;
 }
 
-/* styling text and button part of superhero container */
+
+
+/* ************ styling text and button part of superhero container *************/
 .superhero-body-container{
     width:100%;
     height:30%;
@@ -197,13 +223,12 @@ width:12px
     margin-right: 5px;
     
  }
-
 .superhero-detail-link{
     /* border:solid; */
     margin-top: 10px;
     text-align: center;
     font-size: 1.2rem;
-    
+    cursor:pointer;
 }
 .superhero-detail-link a{
     color:white;
@@ -216,7 +241,10 @@ width:12px
     font-family: Impact;
 }
 
-/* adding media queries */
+
+
+
+/************* adding media queries *************/
 @media  screen and (max-width:1020px) {
     .superhero-container {
         width:21%;
@@ -279,7 +307,22 @@ width:12px
         height:70%;
       
     }
-   
-   
+    #app-name-and-search-container h3{
+        font-size:1.5rem;
+    }
+    #search-container form button{
+        font-size:.8rem;
+    }
+    
+    #search-container a{
+        font-size: 1rem;
+        color:white;
+    }
+
+    #search-container a:hover{
+        font-size: 1rem;
+      
+    }
+
     
 }

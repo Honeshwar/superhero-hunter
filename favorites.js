@@ -56,9 +56,9 @@ function removeCharacter(id){
 function setCharacterToLocalStorageOfCharacterDetail(id){
     console.log("setCharacterToLocalStorageOfCharacterDetail");
     //only one characterDetail store ,because onclick we set and when new click happen we remove it and store new superhero data
-    localStorage.removeItem('characterDetail');
+    localStorage.removeItem('superheroDetailDetail');
     const character=favorites.filter(element=>element.id == id);//getting superhero from favorite by if
-    localStorage.setItem('characterDetail',JSON.stringify(character[0]));
+    localStorage.setItem('superheroDetailDetail',JSON.stringify(character[0]));
     // console.log('after setCharacterToLocalStorageOfCharacterDetail',JSON.parse(localStorage.getItem('characterDetail')));
     location.href=`./superheroDetail.html?characterId=${id}`;// load this url in browser
 

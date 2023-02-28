@@ -87,19 +87,19 @@ function fetchElement(){
  function setCharacterToLocalStorageOfCharacterDetail(id){
             // console.log("setCharacterToLocalStorageOfCharacterDetail");
             //remove each time before any click we will remove item from local storage,at once we can show on superhero detail
-            localStorage.removeItem('characterDetail');
+            localStorage.removeItem('superheroDetailDetail');
 
             //finding superhero Containers that having value attribute having id = our parameter id
             let superheroData=null;
             for(let i=0;i<superheroContainers.length;i++){
-                //   console.log("setCharacterToLocalStorageOfCharacterDetail",JSON.parse(superheroContainers[i].getAttribute("value")));
+                //   console.log("setCharacterToLocalStorageOfsuperheroDetailDetail",JSON.parse(superheroContainers[i].getAttribute("value")));
               if(JSON.parse(superheroContainers[i].getAttribute('value')).id==id){
                   superheroData=superheroContainers[i].getAttribute('value');//already in string form
               }
               }
             // const character=su.filter(element=>element.id == id);//datatype different so not use ===,!==
-            localStorage.setItem('characterDetail',superheroData);//ifnexist already than update this key value,key always an string as an value  so convert json formate data into string
-            // console.log('after setCharacterToLocalStorageOfCharacterDetail',JSON.parse(localStorage.getItem('characterDetail')));
+            localStorage.setItem('superheroDetailDetail',superheroData);//ifnexist already than update this key value,key always an string as an value  so convert json formate data into string
+            // console.log('after setCharacterToLocalStorageOfsuperheroDetailDetail',JSON.parse(localStorage.getItem('superheroDetailDetail')));
             location.href=`./superheroDetail.html?characterId=${id}`;//location load this url in browser
         
 }
