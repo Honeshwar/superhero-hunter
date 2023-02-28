@@ -99,12 +99,13 @@ body{
 /************* styling favorite link *************/
 #search-container a{
     text-decoration: none;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-top: 10px;
     color:rgb(244, 245, 255);
+    margin-left:-20px;
 }
 #search-container a i{
-  color:rgb(232, 244, 9);
+  color:#ffed28;
 }
 #search-container a:hover{
     font-size: 1.2rem;
