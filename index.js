@@ -2,6 +2,31 @@
 const searchBox = document.querySelector('#search-container form input');
 const searchBtn = document.querySelector('#search-container form button');
 const superheroListContainer = document.getElementById('superhero-list-container');
+
+
+// Adding event listener to search box (onKeyPress)
+searchBox.addEventListener('keyup',function(){
+    //getting text/superhero name start with or exact name from search box
+   const input=searchBox.value;
+    if(input){//input!=''
+        getSuperherosNameStartsWith(input);
+    }   
+});
+
+
+// Adding event listener to  search button(onclick)
+searchBtn.addEventListener('click',function(event){
+    event.preventDefault();
+    //getting text/superhero exact name from search box
+    const input = searchBox.value;
+    if(input){
+        getSuperherosByExactName(input);
+    }
+
+});
+//adding an text to superheroListContainer when no container present inside it,
+superheroListContainer.insertAdjacentHTML('afterbegin',`<h1 style="color:white;">"search your superhero it will display here..."</h1>`);
+
 ///this all element fetch after add html element / node to dom using js (after api call)
 //initially we don't know the value so we initialize to all with null(nothing)
 let superheroContainers = null;
@@ -10,46 +35,10 @@ let charactersImage = null;
 let favoriteBtn = null; 
 let characterDetail = null; 
 
-//this function is called after api call happen completely(req-res)
-function fetchElement(){
-    superheroContainers = document.getElementsByClassName('superhero-container');
-    charactersName = document.getElementsByClassName('superhero-name-container');
-    charactersImage = document.querySelectorAll('.superhero-image-container img');
-    favoriteBtn = document.querySelectorAll('.add-to-favorite i');
-    characterDetail = document.querySelectorAll('.superhero-detail-link a');
-    
-    //adding  event listener to all add to favorite buttons
-    for(let i=0;i<favoriteBtn.length;i++){
-    favoriteBtn[i].addEventListener('click',function(){
-        // console.log("add to favoriteBtn",favoriteCharacters);
-        //on click favorite button(star) will become red
-        favoriteBtn[i].setAttribute('class','fa-solid fa-star');
-        favoriteBtn[i].style.color='red';
-      //getting all data from superhero container(where set all data in value attribute)
-        const favoriteCharacterData=JSON.parse(superheroContainers[i].getAttribute("value"));//value=as string obj store ='{"id":"987",}'
-        let presentInFavoriteCharacters=null;//above finded superhero is present in local storage in favorites
-        if(favoriteCharacters!==null){//first time get from local storage in below api call function it return "null"
-            // console.log(favoriteCharacters.filter((e)=>e.id===favoriteCharacterData.id));
-            presentInFavoriteCharacters = favoriteCharacters.filter((e)=>e.id===favoriteCharacterData.id);
-         
-        }else{//when favorite characters array is null(that we get from local storage)
-            favoriteCharacters=[];
-        }
-        //adding an superhero to favorite cahracter array than to local storage
-           if(!presentInFavoriteCharacters || presentInFavoriteCharacters.length===0){//character null ho ga or character arrray empty ho gay toh crete new obbj and add to character favorites//empty array associated with true an obj
-            favoriteCharacterData.addToFavorite=true;console.log(  favoriteCharacterData);
-            favoriteCharacters.unshift(favoriteCharacterData);//character = an obj entire character detail in this obj
-              
-            window.localStorage.setItem("favorites",JSON.stringify(favoriteCharacters));
-            // console.log("favorites",JSON.parse(localStorage.getItem("favorites")));
-               
-            }
-    });
-}
-}
 
-//an array where on ram store all favorite superhero as obj inside it
- let favoriteCharacters = [ 
+
+//an array where we store all favorite superhero as obj inside it
+let favoriteSuperheros = [ 
     //  {
     // id:"34",
     // imgUrl:"url",
@@ -62,89 +51,111 @@ function fetchElement(){
 ];
 
 
-// Adding event listener to search box (onKeyPress)
-    searchBox.addEventListener('keyup',function(event){
-        input=searchBox.value;//event.target.value;
-        console.log(event.target.value,'search box',input);//,input,`inner text ${searchBox.getAttribute(value)}`);//UNTIL I click submit, value in input not assign to value , not in payload present
-        if(input){console.log("api call happening");
-       getSuperherosNameStartsWith(input);
-        }
-       
-        
-        });
-// Adding event listener to  search button(onclick)
-    searchBtn.addEventListener('click',function(event){
-        event.preventDefault();
-        input=searchBox.value;
-        console.log('search button',input);
-        getSuperherosByExactName(input);
+
+//function create to fetch element when we call it , we call it after adding html and superhero data in html(superhero container for all superhero) to  superheroListContainer 
+function fetchElement(){
+
+    superheroContainers = document.getElementsByClassName('superhero-container');
+    charactersName = document.getElementsByClassName('superhero-name-container');
+    charactersImage = document.querySelectorAll('.superhero-image-container img');
+    favoriteBtn = document.querySelectorAll('.add-to-favorite i');
+    characterDetail = document.querySelectorAll('.superhero-detail-link a');
     
+    //adding  event listener to all add to favorite buttons
+    for(let i=0;i<favoriteBtn.length;i++){
+    favoriteBtn[i].addEventListener('click',function(){
+     
+        //on click favorite button(star) will become red
+        favoriteBtn[i].setAttribute('class','fa-solid fa-star');
+        favoriteBtn[i].style.color='red';
+
+        //getting all data from superhero container(where we set all data in value attribute)
+        const favoriteSuperherosData=JSON.parse(superheroContainers[i].getAttribute("value"));//value=as string obj store ='{"id":"987",}'
+        
+        //find whether favoriteSuperhero present in favorite in local storage or not
+        let presentInFavoriteSuperheros=null;
+
+     //favorite character array==null when not set up local storage for favorites ,during api response when favoriteCharacters array as favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
+        if(favoriteSuperheros!==null){
+            presentInFavoriteSuperheros = favoriteSuperheros.filter((e)=>e.id===favoriteCharacterData.id);
+        }else{
+            //when favorite characters array is null(that we get from local storage),we make it empty array and add new favorite superhero in it than add to local storage
+            favoriteSuperheros=[];
+        }
+        //adding an superhero to favorite character array than to local storage
+        //superhero not present in favorite superhero array
+           if(!presentInFavoriteSuperheros || presentInFavoriteSuperheros.length===0){
+            favoriteSuperherosData.addToFavorite=true;
+            favoriteSuperheros.unshift(favoriteSuperherosData);//character = an obj entire character detail in this obj
+              
+            window.localStorage.setItem("favorites",JSON.stringify(favoriteSuperheros));
+               
+            }
     });
+}
+}
 
 
-//html file find in open onclick,global not nested 
-//create an function that call on onClick attribute of an element, to set all data of an superhero to local storage so we can use it in superheroDetails.html page
+
+//create an function that set in onClick attribute of an element, to set all data of an superhero to local storage so we can use it in superheroDetails.html page
  function setCharacterToLocalStorageOfCharacterDetail(id){
-            // console.log("setCharacterToLocalStorageOfCharacterDetail");
-            //remove each time before any click we will remove item from local storage,at once we can show on superhero detail
-            localStorage.removeItem('superheroDetailDetail');
-
+          
             //finding superhero Containers that having value attribute having id = our parameter id
             let superheroData=null;
             for(let i=0;i<superheroContainers.length;i++){
-                //   console.log("setCharacterToLocalStorageOfsuperheroDetailDetail",JSON.parse(superheroContainers[i].getAttribute("value")));
               if(JSON.parse(superheroContainers[i].getAttribute('value')).id==id){
                   superheroData=superheroContainers[i].getAttribute('value');//already in string form
-              }
-              }
-            // const character=su.filter(element=>element.id == id);//datatype different so not use ===,!==
-            localStorage.setItem('superheroDetailDetail',superheroData);//ifnexist already than update this key value,key always an string as an value  so convert json formate data into string
-            // console.log('after setCharacterToLocalStorageOfsuperheroDetailDetail',JSON.parse(localStorage.getItem('superheroDetailDetail')));
+               }
+            }
+          
+            
+            //remove each time before any click we will remove item from local storage,at once we can show on superhero detail
+            localStorage.removeItem('superheroDetail');
+
+            localStorage.setItem('superheroDetail',superheroData);//storing in local storage
             location.href=`./superheroDetail.html?characterId=${id}`;//location load this url in browser
         
 }
 
-// call API to getting superhero by Name Starts With  and ( getting 20 superhero in one API call)    
+// This function use to call API to getting superheros whom Name Starts With argument pass to this function   
  function getSuperherosNameStartsWith(input){
-    // console.log("api call input",input);
+  
     fetch(`http://gateway.marvel.com/v1/public/characters?nameStartsWith=${input}&ts=1&apikey=0f21d3585d27145062e0abfbbb35ace0&hash=a5b1f7d008ffe2ece0c01f89a6583d22`)
     .then((response)=>{
 
        const data = response.json();
        return data;
     
-    }).then((data)=>{
+    }).then((responseData)=>{
+        //get results array from response that having all superhero data
+        const results = responseData.data.results; 
 
         //remove all superhero container of old search,on getting new superhero from api request
-        // superheroListContainer.innerHtml='';
         while(superheroListContainer.firstChild){
             superheroListContainer.removeChild(superheroListContainer.lastChild)
             }
-        favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
+       
         // setting  array an local storage favorites array,so use it for mark favorite always with red star
         favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
 
-        // console.log('local storage',favoriteCharacters);
-        const results = data.data.results; 
-        // console.log(results);
-     
+   
         //creating container  for superhero, for all superhero we get from API request
         for(let i=0;i<results.length;i++){
            
             //finding current superhero(results[i]) is already in our favorite or not
             let isFavorite=false;
-            if(favoriteCharacters!==null&&favoriteCharacters.length>0 ){//null no fav in local storage line 143
+            if(favoriteCharacters!==null&&favoriteCharacters.length>0 ){//null means no favorites in local storage 
                 //finding or  filtering  out from favoriteCharacters array, is  that current superhero(results[i]) is  present in  this array or not  
-                const character =  favoriteCharacters.filter((e)=>results[i].id==e.id);//(results[i].id)sting==number(characterId),not use ===
-                // console.log('local storage character match',character);
+                const character =  favoriteCharacters.filter((e)=>results[i].id==e.id);
+               
                 // if current superhero is present in array, that id not null or is favorite is true than we do isFavorite - true
                 if(character[0] && character[0].id !== null  && character[0].addToFavorite===true){//null when value in superhero container not present
                    isFavorite=true;
                 }
              } 
            
-           
-            function createSuperheroContainer(character){//${} display any variable  
+           //This function id use to add html to superhero List Container (with in html adding superhero data)
+            function createSuperheroContainer(character){//
                 //getting all data that we needed to display in html page
                 const id =character.id;
                 const name =character.name;
@@ -179,7 +190,7 @@ function fetchElement(){
         //fetch elements/nodes that added by js to dom and also add event listener to some of them
            fetchElement();
        
-        //    if response .data.results array is empty so remove all node from dom and add an text to  superheroListContainer
+        //  if response.data.results array is empty, so remove all node from dom and add an text to  superheroListContainer no superhero exists  
            if(results.length===0){
             while(superheroListContainer.firstChild){
                 superheroListContainer.removeChild(superheroListContainer.lastChild)
@@ -187,32 +198,28 @@ function fetchElement(){
             superheroListContainer.insertAdjacentHTML('afterbegin',`<h1 style="color:white;">"no superhero exists with " ${input} " name"</h1>`);
             return;
         }
-        //console value attribute
-        // a();
-
     })
 
     .catch((err)=>{
-        console.log(err);
+        console.log("error while api request-reasponse",err);
     });
 }
 
-// call API to getting superhero by exact name (only one superhero getting in this function)
+// This function is used to call API to getting superhero by exact name (only one superhero got by API)
 function getSuperherosByExactName(input){
-    // console.log("api call input",input);
-fetch(`http://gateway.marvel.com/v1/public/characters?name=${input}&ts=1&apikey=0f21d3585d27145062e0abfbbb35ace0&hash=a5b1f7d008ffe2ece0c01f89a6583d22`)
-.then((response)=>{
+  
+    fetch(`http://gateway.marvel.com/v1/public/characters?name=${input}&ts=1&apikey=0f21d3585d27145062e0abfbbb35ace0&hash=a5b1f7d008ffe2ece0c01f89a6583d22`)
+    .then((response)=>{
+        const data = response.json();
+        return data;
 
-   const data = response.json();
-   return data;
-
-}).then((data)=>{
-
+    }).then((responseData)=>{
+        //only one element inside this resulting array,i=0
+        const results = responseData.data.results; 
     favoriteCharacters=JSON.parse(localStorage.getItem("favorites"));
-    const results = data.data.results; 
-    console.log(results);//only one element inside this resulting array,i=0
+
    
-      //    if response .data.results array is empty so remove all node from dom and add an text to  superheroListContainer
+      // if response.data.results array is empty s,o remove all node from dom and add an text to  superheroListContainer no superhero exists wi th
       if(results.length===0){
         while(superheroListContainer.firstChild){
             superheroListContainer.removeChild(superheroListContainer.lastChild)
@@ -224,9 +231,9 @@ fetch(`http://gateway.marvel.com/v1/public/characters?name=${input}&ts=1&apikey=
         let isFavorite=false;
         if(favoriteCharacters!==null&&favoriteCharacters.length>0 ){//null no fav in local storage line 143
             //finding or  filtering  out from favoriteCharacters array, is  that current superhero(results[i]) is  present in  this array or not  
-            const character =  favoriteCharacters.filter((e)=>results[0].id==e.id);//(results[0].id)sting==number(characterId),not use ===
-            // console.log('local storage character match',character);
-            // if current superhero is present in array, that id not null or is favorite is true than we do isFavorite - true
+            const character =  favoriteCharacters.filter((e)=>results[0].id==e.id);//(results[0].id)string==number(characterId),not use ===
+            
+            // if current superhero is present in array, that id not null or is addToFavorite is true than we do isFavorite - true
             if(character[0] && character[0].id !== null  && character[0].addToFavorite===true){//null when value in superhero container not present
                isFavorite=true;
             }
@@ -268,22 +275,13 @@ fetch(`http://gateway.marvel.com/v1/public/characters?name=${input}&ts=1&apikey=
     //fetch elements/nodes that added by js to dom and also add event listener to some of them
        fetchElement();
    
-  
-
-    a();
-
+   
 })
 
 .catch((err)=>{
-    console.log(err);
+    console.log("error while api request-reasponse",err);
 });
 
 }
 
-//to read data
-function a(){
-    for(let s of superheroContainers){
-        console.log(s.getAttribute('value'));
-        }
-}
 

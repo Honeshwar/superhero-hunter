@@ -14,7 +14,7 @@ body{
 
 
 /*************  styling favorites superhero Container *************/
-#favorites superhero-Container{
+#favorites-superhero-container{
     background-color: rgb(7, 7, 94,.3);
     width:100vw;
     height:100vh;
@@ -23,33 +23,35 @@ body{
 }
 
 /*************  styling title and link Container *************/
-#title-and-link {
+#title-and-link-container {
     height:10%;
+
     display:flex;
     justify-content: center;
     align-items: center;
+
     padding-left:10px;
     padding-right:10px;
 }
 
 /*************  styling title *************/
-#title-and-link h1{
-    height:10%;
-    color:rgb(14, 8, 80);
+#title-and-link-container h1{
+   height:10%;
+   color:rgb(14, 8, 80);
    text-decoration:underline;
    transform:rotateY(360deg);
    transition:all 5s ease-in-out;
 }
 
 /*************  styling link *************/
-#title-and-link a{
+#title-and-link-container a{
    position:absolute;
    left:10px;
    top:10px;
-    font-size:1rem;
-    color:rgb(255, 255, 255);
+   font-size:1rem;
+   color:rgb(255, 255, 255);
 }
-#title-and-link a:hover{
+#title-and-link-container a:hover{
     font-size:1.2rem;
 }
 
@@ -168,13 +170,14 @@ body{
    color:red;
    border-top:solid;
    cursor:pointer;
+   font-size: 1.1rem;
 }
 .remove-from-favorites i{
     font-size: 1rem;
     
  }
 .remove-from-favorites:hover i{
-font-size: 1.2rem;
+font-size: 1.3rem;
 
 }
 
@@ -183,12 +186,12 @@ font-size: 1.2rem;
 /************* styling  detail link container *************/
 .superhero-detail-and-remove-link a{
     color:rgb(23, 174, 6);
-      border-top:solid;
-      cursor:pointer;
-   
+    border-top:solid;
+    cursor:pointer;
+    font-size: 1.2rem;
 }
 .superhero-detail-and-remove-link a:hover{
-    font-family: Impact;
+    color:rgb(141, 145, 141);
 }
 
 
@@ -221,13 +224,13 @@ font-size: 1.2rem;
       
     }
    
-    #title-and-link a{
+    #title-and-link-container a{
       
         font-size:.8rem;
         color:rgb(255, 255, 255);
      }
      
-     #title-and-link a:hover{
+     #title-and-link-container a:hover{
         font-size:1rem;
      }
     
@@ -240,15 +243,15 @@ font-size: 1.2rem;
       
     }
    
-    #title-and-link h1{
+    #title-and-link-container h1{
        font-size:1.1rem;
     }
-    #title-and-link a{
+    #title-and-link-container a{
       
         font-size:.7rem;
         color:rgb(255, 255, 255);
      }
-     #title-and-link a:hover{
+     #title-and-link-container a:hover{
         font-size:.8rem;
      }
     

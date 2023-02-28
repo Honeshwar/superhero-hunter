@@ -1,42 +1,43 @@
-// localStorage.clear();
 //favorites is an array that store all superhero that are added to favorite , get that array from local storage
 let favorites=null;
+
 //tell whether browser support local storage /feature/facility and get favorites array from local storage
 if(typeof(Storage)!=='undefined'){
-    console.log(' Window Storage',Storage)
-    console.log('supported local storage',JSON.parse(localStorage.getItem('favorites')));
     favorites=JSON.parse(localStorage.getItem('favorites'));//[{{},key},......]
 }else{
     console.log('not supporting local storage');
 }
-    // window.Storage//This Web Storage API interface provides access to a particular domain's session or local storage. It allows, for example, the addition, modification, or deletion of stored data items.
+   
 
 //fetch html elements that we needed/require
 const superheroListContainer = document.getElementById('superhero-list-container');
 let superheroContainers = null;
 let detailContainers = null;
 
+//function create to fetch element when we call it , we call it after adding html+ with superhero data in html to  superheroListContainer as child 
 function fetchElement(){
     superheroContainers = document.getElementsByClassName('superhero-container');
     detailContainers = document.querySelectorAll('.superhero-detail-and-remove-link a');
 }
 
-//when local storage not having favorites as key it return null,So for that we set an check
-//iterate all favorite and make container /code and add to DOM
-if(favorites !== null){
+
+
+//iterate all favorites and make call to   createSuperheroContainer() function with argument as superhero data(obj)
+if(favorites !== null){//when local storage not having favorites as key it return null,So for that we set an check
     for(let i=0;i<favorites.length;i++){
-        if(favorites[i].id !== null) { //any how id is not define
-            createSuperheroContainer(favorites[i]);//calling function to create superhero container and passing arguments single superhero entire data
-        }
+        createSuperheroContainer(favorites[i]);
     }
     fetchElement();///fetch html elements that we just created by  createSuperheroContainer() function
     
 }
 
+
+
+//on click remove superHero container
 function removeCharacter(id){
-    // console.log("add event listener removeButtons",id);
+   //getting all superhero Containers
     const superheroContainers = document.getElementsByClassName('superhero-container');
-    console.log(superheroContainers);//remove from dom 
+  
     //remove that superhero container that id match with given parameter "id"
     let characterNode=null;
     for(let i=0;i<superheroContainers.length;i++){
@@ -44,28 +45,37 @@ function removeCharacter(id){
             characterNode=superheroContainers[i];
         }
     }
+   
     //access parent and remove child
     characterNode.parentNode.removeChild(characterNode);//character node parent node return than child of parent remove
+   
     //remove superhero from local storage in favorite(obj)
-    favorites=favorites.filter(element=>element.id != id);//datatype different so not use ===,!==
+    favorites=favorites.filter(element=>element.id != id);
     localStorage.setItem('favorites',JSON.stringify(favorites));
-     console.log('after remove',JSON.parse(localStorage.getItem('favorites')));
-}//if exist already than it will update this key value,key always an string as an value  so convert json formate data into string
+    
+}
+
+
 
 //creating function set superhero to local storage  as key characterDetail,so use that data in superheroDetail.html
 function setCharacterToLocalStorageOfCharacterDetail(id){
-    console.log("setCharacterToLocalStorageOfCharacterDetail");
-    //only one characterDetail store ,because onclick we set and when new click happen we remove it and store new superhero data
-    localStorage.removeItem('superheroDetailDetail');
-    const character=favorites.filter(element=>element.id == id);//getting superhero from favorite by if
-    localStorage.setItem('superheroDetailDetail',JSON.stringify(character[0]));
-    // console.log('after setCharacterToLocalStorageOfCharacterDetail',JSON.parse(localStorage.getItem('characterDetail')));
-    location.href=`./superheroDetail.html?characterId=${id}`;// load this url in browser
+
+    //getting superhero from favorites array by id
+    const character=favorites.filter(element=>element.id == id);
+   
+    //on click we set corresponding superhero data to superheroDetail,so each time when click happen we will create new superheroDetail field/key in local storage
+   localStorage.removeItem('superheroDetail')
+   localStorage.setItem('superheroDetail',JSON.stringify(character[0]));
+   
+   // load this url in browser
+   location.href=`./superheroDetail.html?characterId=${id}`;
 
 }
 
-//this is an function to create Superhero Container/node in DOM and here pass superhero data
-function createSuperheroContainer(superheroData){//${} display any variable  
+
+
+//This function id use to add html to superhero List Container (with in html adding superhero data)
+function createSuperheroContainer(superheroData){ 
 
     superheroListContainer.insertAdjacentHTML('beforeend',`
         <div class="superhero-container" value="${superheroData.id}">
@@ -78,14 +88,14 @@ function createSuperheroContainer(superheroData){//${} display any variable
                     <p class="remove-from-favorites" onClick="removeCharacter(${superheroData.id})"><i class="fas fa-remove"></i>  Remove </p>
                     <a onClick="setCharacterToLocalStorageOfCharacterDetail(${superheroData.id})">Detail</a>
                 </div> 
-            
             </div>
         </div> 
     `);
 }
 
-//structure of favorite array
 
+
+//structure of favorite array
 /*favorites = [ 
       {
         id:"34",
