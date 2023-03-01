@@ -15,9 +15,9 @@ Featur it contain:
 - can navigate to favorite page
 
 ### App Screenshot
-![App Screenshot](https://i.ibb.co/vJqzB69/1-1.png)
+![App Screenshot](https://honeshwar.github.io/superhero-hunter/images/1.png)
 
-![App Screenshot](https://i.ibb.co/SdPXm22/1-6.png)
+![App Screenshot](https://honeshwar.github.io/superhero-hunter/images/2.png)
 ## Favorite Page
 
 Featur it contain:
@@ -27,9 +27,9 @@ Featur it contain:
 - can navigate to home page
 
 ### App Screenshot
-![App Screenshot](https://i.ibb.co/Ln5vr16/1-9.png)
+![App Screenshot](https://honeshwar.github.io/superhero-hunter/images/3.png)
 
-![App Screenshot](https://i.ibb.co/s3Pjc8q/1-8.png)
+![App Screenshot](https://honeshwar.github.io/superhero-hunter/images/4.png)
 
 
 ## Superhero Detail Page
@@ -40,4 +40,4 @@ Featur it contain:
 
 ### App Screenshot
 
-![App Screenshot](https://i.ibb.co/ZLkSjXx/1-7.png)
+![App Screenshot](https://honeshwar.github.io/superhero-hunter/images/5.png)
