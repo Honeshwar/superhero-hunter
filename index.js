@@ -27,16 +27,6 @@ searchBtn.addEventListener('click',function(event){
 //adding an text to superheroListContainer when no container present inside it,
 superheroListContainer.insertAdjacentHTML('afterbegin',`<h1 style="color:white;">"search your superhero it will display here..."</h1>`);
 
-///this all element fetch after add html element / node to dom using js (after api call)
-//initially we don't know the value so we initialize to all with null(nothing)
-let superheroContainers = null;
-let charactersName = null;
-let charactersImage = null; 
-let favoriteBtn = null; 
-let characterDetail = null; 
-
-
-
 //an array where we store all favorite superhero as obj inside it
 let favoriteSuperheros = [ 
     //  {
@@ -50,6 +40,14 @@ let favoriteSuperheros = [
     // }
 ];
 
+
+///this all element fetch after add html element / node to dom using js (after api call)
+//initially we don't know the value so we initialize to all with null(nothing)
+let superheroContainers = null;
+let charactersName = null;
+let charactersImage = null; 
+let favoriteBtn = null; 
+let characterDetail = null; 
 
 
 //function create to fetch element when we call it , we call it after adding html and superhero data in html(superhero container for all superhero) to  superheroListContainer 
@@ -123,7 +121,7 @@ function fetchElement(){
     fetch(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${input}&ts=1&apikey=0f21d3585d27145062e0abfbbb35ace0&hash=a5b1f7d008ffe2ece0c01f89a6583d22`)
     .then((response)=>{
 
-       const data = response.json();
+       const data = response.json();//returun promise
        return data;
     
     }).then((responseData)=>{
@@ -201,7 +199,7 @@ function fetchElement(){
     })
 
     .catch((err)=>{
-        console.log("error while api request-reasponse",err);
+        console.log("error while api request-response",err);
     });
 }
 
