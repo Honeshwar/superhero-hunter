@@ -80,6 +80,8 @@ body{
     border-radius: 10px;
     border: .2px solid rgb(184, 184, 191);
     box-shadow: 0 0 6px 3px midnightblue;
+    padding-inline: 10px;
+    font-size: 1.1rem;
 }
 #search-container form button{
     width:10%;
