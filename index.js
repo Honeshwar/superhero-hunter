@@ -118,7 +118,7 @@ function fetchElement(){
 // This function use to call API to getting superheros whom Name Starts With argument pass to this function   
  function getSuperherosNameStartsWith(input){
   
-    fetch(`https://gateway.marvel.com/v1/public/characters?nameStartsWith=${input}&ts=1&apikey=0f21d3585d27145062e0abfbbb35ace0&hash=a5b1f7d008ffe2ece0c01f89a6583d22`)
+    fetch(`https://gateway.marvel.com/v1/public/characters?limit=100&nameStartsWith=${input}&ts=1&apikey=0f21d3585d27145062e0abfbbb35ace0&hash=a5b1f7d008ffe2ece0c01f89a6583d22`)
     .then((response)=>{
 
        const data = response.json();//returun promise
